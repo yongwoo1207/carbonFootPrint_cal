@@ -1,0 +1,179 @@
+/*웹 윗 부분*/
+body{ margin: 0px;}
+#top_box_w{ height: 180px; background-color:white }
+#sub_cont{
+    width: 500px;
+    margin: 0px; padding-top: 5px; padding-left: 240px;
+    float: left;
+}
+#top_box_g{
+    width: 100%; height: 100px;
+    float: left;
+    background-color: rgb(142, 174, 115);
+}
+#logo_box_back{
+    width: 150px; height: 150px;
+    float: left;
+    margin: 15px 0px 15px 60px;
+    border-radius: 50%;
+    background-color: rgb(142, 174, 115);
+}
+#logo_box{
+    width: 100px; height: 100px;
+    overflow: hidden;
+    float: left;
+    padding: 10px; margin: 15px;
+    border-radius: 50%;
+    background-color: white;
+}
+#img_box{
+    width: 100px;
+    height: 50px;
+    margin-top: 15px;
+}
+#logo_img{
+    margin-top: 10px;
+    text-align: center;
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+#name{
+    height: 50px;
+    float: left;
+    margin-top: 30px;
+}
+#head{
+    padding-left: 40px;
+    margin: 26px 0px 0px 0px;
+    color: white;
+}
+
+/*윗부분 아이콘 부분*/
+#iconSet_box{
+    height: 60px; width: 160px;
+    margin: 20px 30px;
+    float: right;
+}
+.icon_img_box{
+    height: 30px; width: 30px;
+    margin: 15px 10px;
+    float: left;
+    overflow: hidden;
+}
+.icon_img{
+    height: 100%; width: 100%;
+}
+
+/*팝업창*/
+#pop_box{
+    background: rgba(0,0,0,0.5);  /*a는 투명도이다.*/
+    position: fixed;  /*아래 설정을 하기 전에 view part기준으로 위치를 설정하는 방식이다.*/
+    top:0; left:0; right:0; bottom:0; /*view part(화면에 보이는 것)을 기준으로 설정. 예시로 top 50px면 위에서 50px부터 영역이 시작된다.*/
+}
+#pop_inner{
+    height: 350px; width: 700px;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 200px;
+    text-align:center; /*내부 텍스트 중앙 정렬*/
+    background: white;
+}
+
+/*옵션창*/
+#option_box{
+    float: left;
+    height: 850px;  width: 950px;
+    margin: 20px 10px 20px 30px;
+}
+.section_box{
+    height: 400px;
+    width: 450px;
+    margin: 10px;
+    border: 2px solid black;
+    float: left;
+}
+#total_result_box{/*section_box 중 마지막 것.*/
+    margin-top: 50px;
+    border: none;
+}
+#total_result{
+    width: 100%; height: 200px;
+    margin-top: 100px;
+    text-align: center;
+}
+#chd{
+    margin-left: 30px;
+    float: left;
+}
+#total_num{
+    color: rgb(142, 174, 115);
+    margin-left: 50px;
+    font-size: 50px;
+    float: left;
+    text-align: left;
+    overflow: scroll;
+}
+#g{
+    float: left;
+    text-align: left;
+}
+#to_te_end{
+    float: left;
+}
+.title_bar{
+    height: 40px;  width: 100%;
+    background-color: rgb(94, 95, 95);
+}
+.op_img{
+    height: 35px; width: 35px;
+    margin: 2px 15px;
+    float: left;
+}
+.op_title{
+    margin: 0;
+    float: left;
+    color: white;
+}
+
+/*결과값창*/
+#result_box{
+    width: 490px; height: 850px;
+    margin: 20px 30px 20px 10px;
+    float: left;
+}
+#result_cont{
+    width: 470px; height: 824px;
+    margin: 10px;
+    border: 2px solid black;
+    background-color: rgb(187, 187, 187);
+}
+#result_text{
+    width: 400px; height: 700px;
+    margin: 40px;
+}
+
+
+/*section table 옵션*/
+.section_table_box{
+    margin: 21px;
+}
+.section_table{
+    border-collapse: collapse;
+}
+.select_title{
+    text-align: left;
+}
+.select_op{
+    margin: 0px 20px;
+}
+.select_desc{
+    margin-bottom: 10px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+h5{
+    margin: 0px;
+    margin-bottom: 10px;
+}
