@@ -2,6 +2,7 @@
 <head>
     <link href="style.css" rel="stylesheet">
     <title>나의 탄소발자국 계산기</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script> <!--그래프 그리기 위한 툴-->
 </head>
 <body>
     <div id="top_box_w">
@@ -18,8 +19,8 @@
             <a href="menu.html"><div title="메뉴" class="icon_img_box"><img class="icon_img" src="img/menu.png"></div></a>
 
         </div></div>
-        <!-- 2022.09.02~ 09.14 (v1.1.0 ~ v.2.0.0) -->
-        <h3 id="sub_cont">2022.09.14 (v.2.0.0)</h3></div>
+        <!-- 2022.09.02~ 09.14 (v1.1.0 ~ v.1.2.0) -->
+        <h3 id="sub_cont">2022.09.14 (v.1.2.0)</h3></div>
 
     <!-- 팝업창 부분 -->
     <div id="pop_box" style="display:none">
@@ -46,7 +47,7 @@
             <div class="section_table_box">
             <table calss="section_table">                
             <tr>
-                <td class="select_desc" colspan="2"><h4>생활 중 기본적으로 배출하는 탄소량을 측정합니다</h4></td>
+                <td colspan="2"><h4>생활 중 기본적으로 배출하는 탄소량을 측정합니다. </h4></td>
             </tr>
                 <tr>
                     <th class="select_title">호흡</th>
@@ -68,7 +69,20 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="select_desc" colspan="2"><h5>-아이폰13프로 탄소발자국과 한국인 평균 핸드폰 교체 주기를 통해 1일 탄소배출량을 계산</h5></td>
+                    <td colspan="2"><h5>-아이폰13프로 생산, 운송에 따른 탄소배출량과 한국인 평균 핸드폰 교체 주기를 통해 1일 탄소배출량을 계산</h5></td>
+                </tr>
+                <tr>
+                    <th class="select_title">노트북</th>
+                    <td>
+                        <select class="select_op" name="laptop" onchange="base_change(this.value)">
+                            <option selected disabled hidden>==선택하세요==</option>
+                            <option value="노트북 소유">노트북 소유</option>
+                            <option value="노트북 미소유">노트북 미소유</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><h5>-노트북 생산, 운송에 따른 탄소배출량과 노트북 평균 수명을 통해 1일 탄소 배출량을 계산</h5></td>
                 </tr>
                 <tr>
                     <th class="select_title">식수</th>
@@ -81,7 +95,17 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="select_desc" colspan="2"><h5>-한국인 평균 물 섭취량을 기준으로 탄소발자국 계산</h5></td>
+                    <td colspan="2"><h5>-한국인 평균 물 섭취량을 기준으로 탄소발자국 계산</h5></td>
+                </tr>
+                <tr>
+                    <th class="select_title">냉장고</th>
+                    <td>
+                        <select class="select_op" name="water" onchange="base_change(this.value)">
+                            <option selected disabled hidden>==선택하세요==</option>
+                            <option value="냉장고 소유">냉장고 소유</option>
+                            <option value="냉장고 미소유">냉장고 미소유</option>
+                        </select>
+                    </td>
                 </tr>
             </table></div>
         </div>
@@ -93,6 +117,10 @@
                 <h2 class="op_title">교통</h2>
             </div>
             <!--select box (콤보박스)영역-->
+            <div id="map_box">
+                <div id="map_logo_box"><a href="https://map.kakao.com/" target="_blank"><img id="map_logo" src="img/kakao_map.webp"></a></div>
+                <div id="map_desc">오늘 이동한 거리는 왼쪽 로고를 클릭해 <br>카카오맵 길찾기 서비스를 이용하시면 됩니다.</div>
+            </div>
             <div class="section_table_box">
             <table calss="section_table">
                 <tr>
@@ -211,6 +239,7 @@
                         </select>
                     </td>
                 </tr>
+                <tr><td colspan="2"><h5>(광역열차) ktx와 일반열차 탄소 배출량의 평균량을 기준으로 계산</h5></td></tr>
                 <tr>
                     <th class="select_title">지하철</th>
                     <td>
@@ -265,7 +294,7 @@
         <div id="default" class="section_box">
             <div class="title_bar">
                 <img class="op_img" src="img/edit.png">
-                <h2 class="op_title">식음료 및 생활</h2>
+                <h2 class="op_title">식음료</h2>
             </div>
             <!--select box (콤보박스)영역-->
             <div class="section_table_box">
@@ -276,7 +305,7 @@
                 <tr>
                     <th class="select_title">백반</th>
                     <td>
-                        <select class="select_op" name="백반" onchange="life_change(this.name, this.value)">
+                        <select class="select_op" name="백반" onchange="food_change(this.name, this.value)">
                             <option selected disabled hidden>==선택하세요==</option>
                             <option value="0">0인분</option>
                             <option value="1">1인분</option>
@@ -285,10 +314,11 @@
                         </select>
                     </td>
                 </tr>
+                <tr><td colspan="2"><h5>서울대 학생식당에서 업로드한 평균 탄소 발자국을 활용하여 계산</h5></td></tr>
                 <tr>
                     <th class="select_title">편의점 도시락</th>
                     <td>
-                        <select class="select_op" name="편의점 도시락" onchange="life_change(this.name, this.value)">
+                        <select class="select_op" name="편의점 도시락" onchange="food_change(this.name, this.value)">
                             <option selected disabled hidden>==선택하세요==</option>
                             <option value="0">0인분</option>
                             <option value="1">1인분</option>
@@ -300,7 +330,7 @@
                 <tr>
                     <th class="select_title">커피</th>
                     <td>
-                        <select class="select_op" name="커피" onchange="life_change(this.name, this.value)">
+                        <select class="select_op" name="커피" onchange="food_change(this.name, this.value)">
                             <option selected disabled hidden>==선택하세요==</option>
                             <option value="0">0잔</option>
                             <option value="1">1잔</option>
@@ -311,10 +341,11 @@
                         </select>
                     </td>
                 </tr>
+                <tr><td colspan="2"><h5>포장용 일회용 플라스틱컵의 탄소발자국 50g이 포함된 값</h5></td></tr>
                 <tr>
                     <th class="select_title">맥주(캔)</th>
                     <td>
-                        <select class="select_op" name="맥주(캔)" onchange="life_change(this.name, this.value)">
+                        <select class="select_op" name="맥주(캔)" onchange="food_change(this.name, this.value)">
                             <option selected disabled hidden>==선택하세요==</option>
                             <option value="0">0개</option>
                             <option value="1">1개</option>
@@ -328,7 +359,7 @@
                 <tr>
                     <th class="select_title">과자</th>
                     <td>
-                        <select class="select_op" name="과자" onchange="life_change(this.name, this.value)">
+                        <select class="select_op" name="과자" onchange="food_change(this.name, this.value)">
                             <option selected disabled hidden>==선택하세요==</option>
                             <option value="0">0개</option>
                             <option value="1">1개</option>
@@ -342,7 +373,7 @@
                 <tr>
                     <th class="select_title">피자</th>
                     <td>
-                        <select class="select_op" name="피자" onchange="life_change(this.name, this.value)">
+                        <select class="select_op" name="피자" onchange="food_change(this.name, this.value)">
                             <option selected disabled hidden>==선택하세요==</option>
                             <option value="0">0판</option>
                             <option value="1">1판</option>
@@ -354,73 +385,131 @@
                     </td>
                 </tr>
                 <tr>
-                    <th colspan="2">생활</th>
-                </tr>
-                <tr>
-                    <th class="select_title">에어컨</th>
+                    <th class="select_title">치킨</th>
                     <td>
-                        <select class="select_op" name="에어컨" onchange="life_change(this.name, this.value)">
+                        <select class="select_op" name="치킨" onchange="food_change(this.name, this.value)">
                             <option selected disabled hidden>==선택하세요==</option>
-                            <option value="0">0시간</option>
-                            <option value="1">1시간</option>
-                            <option value="2">2시간</option>
-                            <option value="3">3시간</option>
-                            <option value="4">4시간</option>
-                            <option value="5">5시간</option>
-                            <option value="6">6시간</option>
-                            <option value="7">7시간</option>
-                            <option value="8">8시간</option>
-                            <option value="9">9시간</option>
-                            <option value="10">10시간</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="select_title">컴퓨터</th>
-                    <td>
-                        <select class="select_op" name="컴퓨터" onchange="life_change(this.name, this.value)">
-                            <option selected disabled hidden>==선택하세요==</option>
-                            <option value="0">0시간</option>
-                            <option value="1">1시간</option>
-                            <option value="2">2시간</option>
-                            <option value="3">3시간</option>
-                            <option value="4">4시간</option>
-                            <option value="5">5시간</option>
-                            <option value="6">6시간</option>
-                            <option value="7">7시간</option>
-                            <option value="8">8시간</option>
-                            <option value="9">9시간</option>
-                            <option value="10">10시간</option>
+                            <option value="0">0마리</option>
+                            <option value="1">1마리</option>
+                            <option value="2">2마리</option>
+                            <option value="3">3마리</option>
+                            <option value="4">4마리</option>
+                            <option value="5">5마리</option>
                         </select>
                     </td>
                 </tr>
             </table></div>
         </div>
-        <div class="section_box" id="total_result_box">
-            <div id="total_result">
-                <div><h1>나의 오늘 하루 탄소 배출량은</h1></div>
-                <div id="chd"><h1>총</h1></div>
-                <div id="total_num">0</div><div id="g"><h1>g 입니다.</h1></div>
+        <div id="default" class="section_box">
+            <div class="title_bar">
+                <img class="op_img" src="edit.png">
+                <h2 class="op_title">생활</h2>
             </div>
-            
+            <!--select box (콤보박스)영역-->
+            <div class="section_table_box">
+                <table calss="section_table">
+                    <tr>
+                        <th colspan="2">생활</th>
+                    </tr>
+                    <tr>
+                        <th class="select_title">에어컨</th>
+                        <td>
+                            <select class="select_op" name="에어컨" onchange="life_change(this.name, this.value)">
+                                <option selected disabled hidden>==선택하세요==</option>
+                                <option value="0">0시간</option>
+                                <option value="1">1시간</option>
+                                <option value="2">2시간</option>
+                                <option value="3">3시간</option>
+                                <option value="4">4시간</option>
+                                <option value="5">5시간</option>
+                                <option value="6">6시간</option>
+                                <option value="7">7시간</option>
+                                <option value="8">8시간</option>
+                                <option value="9">9시간</option>
+                                <option value="10">10시간</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="select_title">컴퓨터</th>
+                        <td>
+                            <select class="select_op" name="컴퓨터" onchange="life_change(this.name, this.value)">
+                                <option selected disabled hidden>==선택하세요==</option>
+                                <option value="0">0시간</option>
+                                <option value="1">1시간</option>
+                                <option value="2">2시간</option>
+                                <option value="3">3시간</option>
+                                <option value="4">4시간</option>
+                                <option value="5">5시간</option>
+                                <option value="6">6시간</option>
+                                <option value="7">7시간</option>
+                                <option value="8">8시간</option>
+                                <option value="9">9시간</option>
+                                <option value="10">10시간</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="select_title">세탁</th>
+                        <td>
+                            <select class="select_op" name="세탁" onchange="life_change(this.name, this.value)">
+                                <option selected disabled hidden>==선택하세요==</option>
+                                <option value="0">0시간</option>
+                                <option value="1">1시간</option>
+                                <option value="2">2시간</option>
+                                <option value="3">3시간</option>
+                                <option value="4">4시간</option>
+                                <option value="5">5시간</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="select_title">헤어드라이기</th>
+                        <td>
+                            <select class="select_op" name="헤어드라이기" onchange="life_change(this.name, this.value)">
+                                <option selected disabled hidden>==선택하세요==</option>
+                                <option value="0">0분</option>
+                                <option value="1">5분</option>
+                                <option value="2">10분</option>
+                                <option value="3">15분</option>
+                                <option value="4">20분</option>
+                                <option value="5">25분</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table></div>
         </div>
-
     </div>
-
 
     <div id="result_box">
         <div id="result_cont">
             <div class="title_bar">
-                <img class="op_img" src="img/check.png">
+                <img class="op_img" src="check.png">
                 <h2 class="op_title">결과값</h2>
             </div>
+            <div id="button_bar">
+                <a href="index.html"><button class="button" id="reset_btn" onclick="">초기화</button></a>
+            </div>
             <div id="result_text"></div>
+            <div id="total_result_box">
+                <div id="total_result">
+                    <div><h2>나의 오늘 하루 탄소 배출량은</h2></div>
+                    <div id="chd"><h2>total</h2></div>
+                    <div id="total_num">0</div><div id="g"><h2>g 입니다.</h2></div>
+                </div></div>
         </div>
     </div>
 
+    <div id="grap_box">
+        <div id="chart_box">
+            <canvas id="carbon_Chart"></canvas>
+        </div>
+    </div>
 
-
-
+    <div id="tail_box">
+        <div class="power_logo"><img class="power_logo_img" src="git_logo.png"></div>
+        <div class="power_logo"><img class="power_logo_img" src="chartjs-logo.svg"></div>
+    </div>
     <script src="fun.js"></script>
 </body>
 </html>
