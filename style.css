@@ -9,14 +9,14 @@ body{ margin: 0px;}
 #top_box_g{
     width: 100%; height: 100px;
     float: left;
-    background-color: rgb(142, 174, 115);
+    background-color: #8eaf74;
 }
 #logo_box_back{
     width: 150px; height: 150px;
     float: left;
     margin: 15px 0px 15px 60px;
     border-radius: 50%;
-    background-color: rgb(142, 174, 115);
+    background-color: #8eae73;
 }
 #logo_box{
     width: 100px; height: 100px;
@@ -27,8 +27,7 @@ body{ margin: 0px;}
     background-color: white;
 }
 #img_box{
-    width: 100px;
-    height: 50px;
+    width: 100px; height: 50px;
     margin-top: 15px;
 }
 #logo_img{
@@ -86,19 +85,39 @@ body{ margin: 0px;}
     margin: 20px 10px 20px 30px;
 }
 .section_box{
-    height: 400px;
-    width: 450px;
+    height: 400px; width: 450px;
     margin: 10px;
     border: 2px solid black;
     float: left;
 }
+#map_box{
+    height: 50px; width: 440px;
+    margin: 5px; margin-top: 15px;
+}
+#map_desc{
+    height: 45px; width: 350px;
+    margin: 3px; margin-left: 10px;
+    font-weight: 900;
+    float: left;
+}
+#map_logo_box{
+    height: 40px; width: 40px;
+    float: left; margin: 5px;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 20px;
+}
+#map_logo{
+    height: 100%; width: 100%;
+    float: left;
+}
 #total_result_box{/*section_box 중 마지막 것.*/
-    margin-top: 50px;
+    height: 150px; width:100%;
+    float: left;
     border: none;
 }
 #total_result{
-    width: 100%; height: 200px;
-    margin-top: 100px;
+    width: 100%; height: 100%;
     text-align: center;
 }
 #chd{
@@ -106,23 +125,25 @@ body{ margin: 0px;}
     float: left;
 }
 #total_num{
-    color: rgb(142, 174, 115);
+    color: #009063; font-size: 50px;
     margin-left: 50px;
-    font-size: 50px;
     float: left;
     text-align: left;
-    overflow: scroll;
 }
 #g{
     float: left;
     text-align: left;
 }
-#to_te_end{
-    float: left;
-}
 .title_bar{
     height: 40px;  width: 100%;
     background-color: rgb(94, 95, 95);
+}
+#button_bar{
+    height: 60px; width: 100%;
+}
+.button{
+    margin: 15px 10px;
+    float: left;
 }
 .op_img{
     height: 35px; width: 35px;
@@ -148,17 +169,18 @@ body{ margin: 0px;}
     background-color: rgb(187, 187, 187);
 }
 #result_text{
-    width: 400px; height: 700px;
-    margin: 40px;
+    width: 400px; height: 500px;
+    margin: 10px 40px;
+    overflow: scroll;
 }
-
 
 /*section table 옵션*/
 .section_table_box{
+    width: 400px;
     margin: 21px;
 }
 .section_table{
-    border-collapse: collapse;
+    border-collapse: collapse;  /*표 사이에 2줄 선 생기는 것을 1줄로 바꾸기*/
 }
 .select_title{
     text-align: left;
@@ -166,14 +188,41 @@ body{ margin: 0px;}
 .select_op{
     margin: 0px 20px;
 }
-.select_desc{
-    margin-bottom: 10px;
-}
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
   }
-h5{
+h4{
     margin: 0px;
-    margin-bottom: 10px;
+}
+h5{
+    margin: 0px; margin-bottom: 10px;
+}
+
+
+/*grap_box 영역*/
+#grap_box{
+    height: 600px; width: 100%;
+    float: left;
+    background-color: rgb(236, 251, 223);
+}
+#chart_box{
+    margin: 70px; margin-top: 100px;
+    height: 400px; width: 650px;
+}
+
+/*tail 영역*/
+#tail_box{
+    height: 120px; width: 100%;
+    float: left;
+    background-color: rgb(142, 174, 115);
+}
+.power_logo{
+    height: 60px; width: 60px;
+    margin: 25px 10px 20px 10px;
+    float: left;
+}
+.power_logo_img{
+    height: 100%; width: 100%;
+    object-fit: cover;
 }
