@@ -45,6 +45,7 @@ body{ margin: 0px;}
     padding-left: 40px;
     margin: 26px 0px 0px 0px;
     color: white;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 /*윗부분 아이콘 부분*/
@@ -154,6 +155,7 @@ body{ margin: 0px;}
     margin: 0;
     float: left;
     color: white;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 /*결과값창*/
@@ -177,10 +179,11 @@ body{ margin: 0px;}
 /*section table 옵션*/
 .section_table_box{
     width: 400px;
-    margin: 21px;
+    margin: 20px;
 }
 .section_table{
     border-collapse: collapse;  /*표 사이에 2줄 선 생기는 것을 1줄로 바꾸기*/
+    float: left;
 }
 .select_title{
     text-align: left;
@@ -230,13 +233,14 @@ h5{
 }
 .power_logo{
     height: 60px; width: 60px;
-    margin: 25px 10px 20px 10px;
+    margin: 25px 15px 20px 10px;
     float: left;
 }
 .power_logo_img{
     height: 100%; width: 100%;
     object-fit: cover;
 }
+
 /*글꼴 모음*/
 p, option, th, h4, h5, h2, .chd, .total_num, .g{
     font-family: 'Noto Sans KR', sans-serif;
