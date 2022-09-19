@@ -212,8 +212,8 @@ h5{
     float: left;
 }
 #ad_box{
-    height: 500px; width: 500px;
-    margin-left: 90px;
+    height: 510px; width: 510px;
+    margin : 20px 0px 0px 70px;
     float: left;
 }
 .ad{
