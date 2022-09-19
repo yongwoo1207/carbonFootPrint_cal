@@ -18,5 +18,4 @@
     {% endif %}
     {% endfor %}
 </urlset>
-
 url: https://yongwoo1207.github.io
