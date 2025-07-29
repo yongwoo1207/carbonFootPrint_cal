@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {% for post in site.posts %}
-    <url>
-      <loc>{{ site.url }}{{ post.url }}</loc>
-      {% if post.last_modified_at == null %}
-        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-      {% else %}
-        <lastmod>{{ post.last_modified_at | date_to_xmlschema }}</lastmod>
-      {% endif %}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-      {% if post.sitemap.changefreq == null %}
-        <changefreq>weekly</changefreq>
-      {% else %}
-        <changefreq>{{ post.sitemap.changefreq }}</changefreq>
-      {% endif %}
+  <!-- 메인 페이지 (index.html) -->
+  <url>
+    <loc>https://yongwoo1207.github.io/carbonFootPrint_cal/</loc>
+    <lastmod>2025-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- 관련 사이트 모음 페이지 (menu.html) -->
+  <url>
+    <loc>https://yongwoo1207.github.io/carbonFootPrint_cal/menu.html</loc>
+    <lastmod>2025-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-      {% if post.sitemap.priority == null %}
-          <priority>0.5</priority>
-      {% else %}
-        <priority>{{ post.sitemap.priority }}</priority>
-      {% endif %}
+  <!-- 만약 다른 HTML 페이지를 추가한다면, 위 <url> 태그를 복사해서 여기에 추가하세요. -->
 
-    </url>
-  {% endfor %}
 </urlset>
