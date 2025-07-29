@@ -1,0 +1,7 @@
+# 모든 검색 엔진 로봇에게 적용되는 규칙
+User-agent: *
+# 모든 페이지에 대한 접근을 허용
+Allow: /
+
+# 사이트맵 파일의 위치를 알려줌
+Sitemap: https://yongwoo1207.github.io/carbonFootPrint_cal/sitemap.xml
